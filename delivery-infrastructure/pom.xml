@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.com.grupo1</groupId>
+        <artifactId>delivery-clean-architecture</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>delivery-infrastructure</artifactId>
+    <name>Delivery - Frameworks e Drivers (Infraestrutura)</name>
+
+    <!--
+        Círculo mais externo: o único lugar onde entram frameworks,
+        drivers de banco e a classe Main que monta (injeta) tudo.
+        Depende de todas as camadas internas.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>br.com.grupo1</groupId>
+            <artifactId>delivery-adapters</artifactId>
+        </dependency>
+        <!--
+            Quando o grupo decidir (Dia do Contrato), adicionar aqui:
+            - o framework web (ou nenhum, se a entrada for CLI)
+            - o driver do banco (ex.: H2 ou SQLite)
+        -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>br.com.grupo1.delivery.infrastructure.DeliveryApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
