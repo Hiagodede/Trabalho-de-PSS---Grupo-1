@@ -1,0 +1,21 @@
+# Maven
+target/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+out/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Bancos locais gerados em execução
+*.db
+*.mv.db
+*.trace.db
