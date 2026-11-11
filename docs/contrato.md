@@ -23,7 +23,7 @@
 
 ## 3. Casos de uso do escopo (3 a 5)
 
-| # | Caso de uso | Ator | Resumo do fluxo | Responsável pela orquestração |
+| # | Caso de uso | Ator | Resumo do fluxo | Dupla |
 |---|---|---|---|---|
 | 1 | | | | |
 | 2 | | | | |
@@ -79,6 +79,6 @@ Para cada caso de uso: interface, dados de entrada, dados de saída e erros poss
 
 ## 8. Divisão das primeiras issues
 
-| Issue | Camada | Responsável | Depende de |
+| Issue | Onda / camada | Dupla | Depende de |
 |---|---|---|---|
 | | | | |
