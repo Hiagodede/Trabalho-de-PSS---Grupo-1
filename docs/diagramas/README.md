@@ -1,6 +1,6 @@
 # Diagramas
 
-Responsável: **Pessoa 6** (Arquitetura e Apresentação). A apresentação permite no máximo
+Responsável: função **Arquitetura e Apresentação**, com uma dupla desenhando o diagrama de sequência do próprio caso de uso. A apresentação permite no máximo
 **3 slides** de diagramas.
 
 | Diagrama | Mostra | Status |
