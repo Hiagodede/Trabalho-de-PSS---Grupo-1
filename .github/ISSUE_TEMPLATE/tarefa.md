@@ -6,6 +6,7 @@ labels: ''
 assignees: ''
 ---
 
+**Dupla:** <!-- A | B | C -->
 **Caso de uso:** <!-- ex.: Realizar pedido -->
 **Camada:** <!-- domínio | casos de uso | adaptadores | infraestrutura | testes/build | docs -->
 
