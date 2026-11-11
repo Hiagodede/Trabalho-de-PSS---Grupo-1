@@ -32,7 +32,7 @@ mvn install -DskipTests
 mvn -pl delivery-infrastructure exec:java
 ```
 
-<!-- TODO (Pessoa 5): atualizar esta seção quando a interface (REST/CLI) e o banco forem definidos:
+<!-- TODO (função Qualidade e Build): atualizar esta seção quando a interface (REST/CLI) e o banco forem definidos:
      porta, endpoints ou comandos disponíveis, e como trocar a implementação de persistência. -->
 
 ## Estrutura do projeto
@@ -40,20 +40,24 @@ mvn -pl delivery-infrastructure exec:java
 Cada camada da Clean Architecture é um **módulo Maven**. Um módulo só declara dependência
 para módulos mais internos, então uma dependência na direção errada **não compila**.
 
+Todas as duplas escrevem código em todas as camadas (veja [Como o grupo trabalha](#como-o-grupo-trabalha)).
+O **guardião** de uma camada não a escreve sozinho: ele revisa os PRs dela e garante que o código
+fique consistente entre as duplas.
+
 ```
 infrastructure  →  adapters  →  application  →  domain
   (de fora)                                     (centro)
 ```
 
-| Módulo | Camada | Responsável | Pode depender de |
-|---|---|---|---|
-| `delivery-domain` | Entidades | Pessoa 1 | nada |
-| `delivery-application` | Casos de uso + interfaces (ports) | Pessoa 2 | domain |
-| `delivery-adapters` | Controllers, presenters, gateways | Pessoa 3 | application, domain |
-| `delivery-infrastructure` | Frameworks, banco, `Main` | Pessoa 4 | todos |
-| `delivery-architecture-tests` | Testes da regra de dependência (ArchUnit) | Pessoa 5 | todos (só testes) |
+| Módulo | Camada | Onda | Guardião | Pode depender de |
+|---|---|---|---|---|
+| `delivery-domain` | Entidades | 1 | Guardião do Domínio | nada |
+| `delivery-application` | Casos de uso + interfaces (ports) | 2 | Guardião dos Casos de Uso | domain |
+| `delivery-adapters` | Controllers, presenters, gateways | 3 | Guardião dos Adaptadores | application, domain |
+| `delivery-infrastructure` | Frameworks, banco, `Main` | 4 | Guardião da Infraestrutura | todos |
+| `delivery-architecture-tests` | Testes da regra de dependência (ArchUnit) | — | Qualidade e Build | todos (só testes) |
 
-Documentação e material da apresentação ficam em [`docs/`](docs/) (Pessoa 6):
+Documentação e material da apresentação ficam em [`docs/`](docs/) (função Arquitetura e Apresentação):
 
 | Pasta | Conteúdo |
 |---|---|
@@ -62,15 +66,34 @@ Documentação e material da apresentação ficam em [`docs/`](docs/) (Pessoa 6)
 | [`docs/diagramas/`](docs/diagramas/) | Diagramas da arquitetura |
 | [`docs/explicacoes/`](docs/explicacoes/) | Resumo de cada Meet de explicação |
 
+## Como o grupo trabalha
+
+O grupo trabalha em **3 duplas**, e cada dupla é dona de 1 ou 2 casos de uso em **todas** as camadas.
+As duplas avançam juntas, uma camada por vez, **de dentro para fora**, seguindo a regra de dependência:
+
+| Onda | Datas | Todas as duplas trabalham em |
+|---|---|---|
+| 1 | 14–15/11 | Domínio: entidades e regras do seu caso de uso |
+| 2 | 16–17/11 | Casos de uso e interfaces (ports), testados com repositório em memória |
+| 3 | 18/11 | Adaptadores: controller, presenter e DTOs |
+| 4 | 19/11 | Infraestrutura: persistência real que implementa as interfaces da onda 2 |
+| — | 20/11 | Integração e revisão |
+
+No fim de cada onda, cada dupla explica o que fez para o grupo (resumo em [`docs/explicacoes/`](docs/explicacoes/)).
+A entidade central (Pedido) e as interfaces são definidas juntas em [`docs/contrato.md`](docs/contrato.md).
+
 ## Integrantes
 
-| # | Nome | Papel | GitHub |
-|---|---|---|---|
-| 1 | | Domínio | |
-| 2 | | Casos de Uso | |
-| 3 | | Adaptadores | |
-| 4 | | Infraestrutura | |
-| 5 | | Qualidade e Build | |
-| 6 | | Arquitetura e Apresentação | |
+| Nome | GitHub | Dupla | Função transversal | Casos de uso |
+|---|---|---|---|---|
+| | | A | | |
+| | | A | | |
+| | | B | | |
+| | | B | | |
+| | | C | | |
+| | | C | | |
+
+Funções transversais: Guardião do Domínio, Guardião dos Casos de Uso, Guardião dos Adaptadores,
+Guardião da Infraestrutura, Qualidade e Build, Arquitetura e Apresentação.
 
 Como contribuir: veja [`CONTRIBUTING.md`](CONTRIBUTING.md).
