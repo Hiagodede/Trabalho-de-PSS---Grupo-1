@@ -31,7 +31,7 @@ usam frameworks.
 ## Consequências
 
 - **Positivas:** uma violação da regra de dependência quebra a compilação ou o teste, o que
-  serve como prova na demonstração. Cada integrante tem um módulo claro como responsabilidade.
+  serve como prova na demonstração. Cada módulo tem um guardião que revisa os PRs daquela camada, enquanto as duplas implementam seus casos de uso em todas as camadas.
 - **Negativas / custos:** mais arquivos `pom.xml`; para executar é preciso instalar os módulos
   (`mvn install`) antes do `exec:java`.
 - **Relação com a Clean Architecture:** materializa a Regra de Dependência ("o código-fonte só
