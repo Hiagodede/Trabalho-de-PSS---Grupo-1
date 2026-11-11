@@ -1,7 +1,7 @@
 /**
  * <h2>Camada de Adaptadores de Interface (Interface Adapters)</h2>
  *
- * <p><b>Responsável:</b> Pessoa 3 (Adaptadores).</p>
+ * <p><b>Guardião:</b> Guardião dos Adaptadores. Todas as duplas escrevem aqui na <b>onda 3</b>.</p>
  *
  * <p><b>O que fica aqui:</b> o código que converte dados entre o formato mais
  * conveniente para os casos de uso e o formato do mundo externo:</p>
