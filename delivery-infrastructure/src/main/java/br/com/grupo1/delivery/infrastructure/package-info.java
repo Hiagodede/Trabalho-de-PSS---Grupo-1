@@ -1,7 +1,7 @@
 /**
  * <h2>Camada de Frameworks e Drivers (Infraestrutura) — círculo mais externo</h2>
  *
- * <p><b>Responsável:</b> Pessoa 4 (Infraestrutura).</p>
+ * <p><b>Guardião:</b> Guardião da Infraestrutura. Todas as duplas escrevem aqui na <b>onda 4</b>.</p>
  *
  * <p><b>O que fica aqui:</b> tudo o que é "detalhe" segundo a Clean Architecture:</p>
  * <ul>
