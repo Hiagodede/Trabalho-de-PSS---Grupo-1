@@ -1,7 +1,7 @@
 /**
  * <h2>Camada de Casos de Uso (Application Business Rules)</h2>
  *
- * <p><b>Responsável:</b> Pessoa 2 (Casos de Uso).</p>
+ * <p><b>Guardião:</b> Guardião dos Casos de Uso. Todas as duplas escrevem aqui na <b>onda 2</b>.</p>
  *
  * <p><b>O que fica aqui:</b> os fluxos da aplicação (um caso de uso por classe), os
  * dados de entrada e saída de cada caso de uso e as <b>interfaces</b> que os casos
