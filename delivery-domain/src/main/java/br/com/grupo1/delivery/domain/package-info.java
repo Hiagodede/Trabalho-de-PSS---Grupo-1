@@ -1,7 +1,7 @@
 /**
  * <h2>Camada de Domínio (Entities) — círculo mais interno</h2>
  *
- * <p><b>Responsável:</b> Pessoa 1 (Domínio).</p>
+ * <p><b>Guardião:</b> Guardião do Domínio. Todas as duplas escrevem aqui na <b>onda 1</b>.</p>
  *
  * <p><b>O que fica aqui:</b> as entidades do delivery e as regras de negócio que
  * valem em qualquer sistema da empresa (ex.: quais transições de status um pedido
