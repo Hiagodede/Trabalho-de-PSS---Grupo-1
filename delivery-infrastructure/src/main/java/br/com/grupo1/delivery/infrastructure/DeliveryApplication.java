@@ -16,7 +16,7 @@ public final class DeliveryApplication {
     }
 
     public static void main(String[] args) {
-        // TODO (Pessoa 4): montar as dependências e iniciar a interface escolhida.
+        // TODO (onda 4, revisado pelo Guardião da Infraestrutura): montar as dependências e iniciar a interface escolhida.
         System.out.println("Delivery - Clean Architecture: esqueleto pronto. Nenhum caso de uso implementado ainda.");
     }
 }
