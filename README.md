@@ -1,76 +1,53 @@
 # Delivery — Clean Architecture
 
-Trabalho da disciplina de **Projeto de Sistemas de Software** — Grupo 1, **Tema 1**:
-*Clean Architecture com exemplo em Java aplicado a um Sistema de Delivery, evidenciando a
-separação de responsabilidades, a direção das dependências e a independência das regras de
-negócio em relação à infraestrutura.*
+Trabalho de **Projeto de Sistemas de Software** — Grupo 1, Tema 1: Clean Architecture aplicada a um
+Sistema de Delivery. Sessão técnica em **01/12/2026**.
 
-> Sessão técnica: **01/12/2026**, Laboratório 3.
+## Como executar
 
-## Pré-requisitos
-
-| Ferramenta | Versão | Como conferir |
-|---|---|---|
-| JDK | 21 | `java -version` |
-| Apache Maven | 3.9 ou superior | `mvn -version` |
-| Git | qualquer recente | `git --version` |
-
-Nenhuma IDE é necessária: todos os comandos abaixo rodam no terminal.
-
-## Como executar localmente
+Pré-requisitos: **JDK 21** e **Maven 3.9+**.
 
 ```bash
-# 1. Clonar
 git clone https://github.com/Hiagodede/Trabalho-de-PSS---Grupo-1.git
 cd Trabalho-de-PSS---Grupo-1
 
-# 2. Compilar, rodar todos os testes e verificar a regra de dependência
-mvn verify
-
-# 3. Executar a aplicação
+mvn verify                                  # compila, roda os testes e checa a arquitetura
 mvn install -DskipTests
-mvn -pl delivery-infrastructure exec:java
+mvn -pl delivery-infrastructure exec:java   # executa a aplicação
 ```
 
-<!-- TODO (Pessoa 5): atualizar esta seção quando a interface (REST/CLI) e o banco forem definidos:
-     porta, endpoints ou comandos disponíveis, e como trocar a implementação de persistência. -->
+## Estrutura
 
-## Estrutura do projeto
+Cada camada é um módulo Maven. Um módulo só depende dos módulos mais internos; se alguém importar
+na direção errada, o build falha.
 
-Cada camada da Clean Architecture é um **módulo Maven**. Um módulo só declara dependência
-para módulos mais internos, então uma dependência na direção errada **não compila**.
+| Módulo | Camada | Depende de |
+|---|---|---|
+| `delivery-domain` | Entidades e regras de negócio | nada |
+| `delivery-application` | Casos de uso e interfaces | domain |
+| `delivery-adapters` | Controllers, presenters, gateways | application |
+| `delivery-infrastructure` | Banco, framework e `Main` | adapters |
+| `delivery-architecture-tests` | Teste da regra de dependência | todos |
 
-```
-infrastructure  →  adapters  →  application  →  domain
-  (de fora)                                     (centro)
-```
+## Como trabalhamos
 
-| Módulo | Camada | Responsável | Pode depender de |
-|---|---|---|---|
-| `delivery-domain` | Entidades | Pessoa 1 | nada |
-| `delivery-application` | Casos de uso + interfaces (ports) | Pessoa 2 | domain |
-| `delivery-adapters` | Controllers, presenters, gateways | Pessoa 3 | application, domain |
-| `delivery-infrastructure` | Frameworks, banco, `Main` | Pessoa 4 | todos |
-| `delivery-architecture-tests` | Testes da regra de dependência (ArchUnit) | Pessoa 5 | todos (só testes) |
+3 duplas, cada uma com 1 caso de uso, programado em todas as camadas.
 
-Documentação e material da apresentação ficam em [`docs/`](docs/) (Pessoa 6):
+1. **Até 13/11:** escolher os casos de uso e combinar o Pedido ([`docs/contrato.md`](docs/contrato.md)).
+2. **14 a 20/11:** cada dupla programa o seu caso de uso: domínio → caso de uso → controller → banco.
+3. **21 a 26/11:** juntar, testar e fazer os diagramas.
+4. **27 a 30/11:** slides e ensaios.
 
-| Pasta | Conteúdo |
-|---|---|
-| [`docs/contrato.md`](docs/contrato.md) | Contrato entre as camadas, definido no Dia do Contrato |
-| [`docs/adr/`](docs/adr/) | Decisões técnicas e padrões de projeto adotados |
-| [`docs/diagramas/`](docs/diagramas/) | Diagramas da arquitetura |
-| [`docs/explicacoes/`](docs/explicacoes/) | Resumo de cada Meet de explicação |
+Regras: quem revisa o PR é alguém de outra dupla; terminou uma parte, explica na reunião semanal;
+ninguém muda o Pedido sozinho.
 
 ## Integrantes
 
-| # | Nome | Papel | GitHub |
+| Nome | GitHub | Dupla | Caso de uso |
 |---|---|---|---|
-| 1 | | Domínio | |
-| 2 | | Casos de Uso | |
-| 3 | | Adaptadores | |
-| 4 | | Infraestrutura | |
-| 5 | | Qualidade e Build | |
-| 6 | | Arquitetura e Apresentação | |
-
-Como contribuir: veja [`CONTRIBUTING.md`](CONTRIBUTING.md).
+| | | A | |
+| | | A | |
+| | | B | |
+| | | B | |
+| | | C | |
+| | | C | |
