@@ -41,6 +41,18 @@ na direção errada, o build falha.
 Regras: quem revisa o PR é alguém de outra dupla; terminou uma parte, explica na reunião semanal;
 ninguém muda o Pedido sozinho.
 
+### Onde cada dupla mexe
+
+Os arquivos já existem com as assinaturas prontas. Procure por `TODO dupla A`, `TODO dupla B` ou
+`TODO dupla C` e preencha o seu. Os testes do seu caso de uso estão com `@Disabled`: tire quando escrever cada um.
+
+| Camada | Dupla A · Fazer pedido | Dupla B · Atualizar status | Dupla C · Cancelar pedido |
+|---|---|---|---|
+| Domínio | `Pedido.total()`, `ItemPedido`, `Restaurante` | `Pedido.avancarStatus()` | `Pedido.cancelar()` |
+| Casos de uso | `fazerpedido/` | `atualizarstatus/` | `cancelarpedido/` |
+| Adaptadores | `fazerpedido/` + repositórios em memória | `atualizarstatus/` | `cancelarpedido/` |
+| Infraestrutura | opção 1 do `MenuTerminal` | opção 2 do `MenuTerminal` | opção 3 do `MenuTerminal` |
+
 ## Integrantes
 
 | Nome | GitHub | Dupla | Caso de uso |
