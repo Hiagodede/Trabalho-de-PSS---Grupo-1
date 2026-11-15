@@ -61,5 +61,5 @@ Os arquivos já existem com as assinaturas prontas. Procure por `TODO dupla A`, 
 | Igor | | A | Fazer pedido |
 | Rafael | | B | Atualizar status |
 | Hiago | Hiagodede | B | Atualizar status |
-| Lukas | | C | Cancelar pedido |
-| Gustavo | | C | Cancelar pedido |
+| Lukas | LukasBasilio | C | Cancelar pedido |
+| Gustavo | Gustavo-wesley | C | Cancelar pedido |
