@@ -57,9 +57,9 @@ Os arquivos já existem com as assinaturas prontas. Procure por `TODO dupla A`, 
 
 | Nome | GitHub | Dupla | Caso de uso |
 |---|---|---|---|
-| | | A | |
-| | | A | |
-| | | B | |
-| | | B | |
-| | | C | |
-| | | C | |
+| Arthur | arthurmarqss | A | Fazer pedido |
+| Igor | | A | Fazer pedido |
+| Rafael | | B | Atualizar status |
+| Hiago | Hiagodede | B | Atualizar status |
+| Lukas | LukasBasilio | C | Cancelar pedido |
+| Gustavo | Gustavo-wesley | C | Cancelar pedido |
