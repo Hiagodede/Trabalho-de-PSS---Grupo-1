@@ -1,5 +1,6 @@
 package br.com.grupo1.delivery.domain.pedido;
 
+import br.com.grupo1.delivery.domain.RegraDeNegocioException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -40,8 +41,10 @@ public class Pedido {
     // ---------- Dupla C: Cancelar pedido ----------
 
     public void cancelar() {
-        // TODO dupla C: só cancela antes de SAIU_PARA_ENTREGA
-        throw new UnsupportedOperationException("TODO dupla C");
+        if (status != StatusPedido.RECEBIDO && status != StatusPedido.EM_PREPARO) {
+            throw new RegraDeNegocioException("Não é possível cancelar: o pedido está " + status + ".");
+        }
+        this.status = StatusPedido.CANCELADO;
     }
 
     // ---------- Leitura (todas as duplas) ----------
