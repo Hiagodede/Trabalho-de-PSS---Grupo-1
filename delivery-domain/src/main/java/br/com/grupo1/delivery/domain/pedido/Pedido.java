@@ -3,10 +3,6 @@ package br.com.grupo1.delivery.domain.pedido;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Entidade central, compartilhada pelas três duplas.
- * Cada dupla preenche só os métodos marcados com o seu nome.
- */
 public class Pedido {
 
     private final String id;
@@ -24,28 +20,32 @@ public class Pedido {
     }
 
     // ---------- Dupla A: Fazer pedido ----------
-
     public BigDecimal total() {
-        // TODO dupla A: soma dos itens + taxa de entrega (frete grátis acima de R$ 100)
-        throw new UnsupportedOperationException("TODO dupla A");
+        
+        BigDecimal soma = BigDecimal.ZERO;
+        for (ItemPedido item : itens) {
+            soma = soma.add(item.subtotal());
+        }
+        if (soma.compareTo(new BigDecimal("100")) > 0) {
+            return soma;
+        }
+        return soma.add(this.taxaDeEntrega);
+
     }
 
     // ---------- Dupla B: Atualizar status ----------
-
     public void avancarStatus() {
         // TODO dupla B: RECEBIDO -> EM_PREPARO -> SAIU_PARA_ENTREGA -> ENTREGUE, sem pular nem voltar
         throw new UnsupportedOperationException("TODO dupla B");
     }
 
     // ---------- Dupla C: Cancelar pedido ----------
-
     public void cancelar() {
         // TODO dupla C: só cancela antes de SAIU_PARA_ENTREGA
         throw new UnsupportedOperationException("TODO dupla C");
     }
 
     // ---------- Leitura (todas as duplas) ----------
-
     public String id() {
         return id;
     }
