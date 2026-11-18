@@ -1,15 +1,19 @@
 package br.com.grupo1.delivery.domain.pedido;
 
 import java.math.BigDecimal;
+import br.com.grupo1.delivery.domain.RegraDeNegocioException;
 
-/** Um prato dentro do pedido. Dupla A. */
 public record ItemPedido(String nomeDoPrato, int quantidade, BigDecimal precoUnitario) {
 
     public ItemPedido {
-        // TODO dupla A: validar quantidade e preço (ex.: quantidade maior que zero)
+        if (quantidade <= 0) {
+            throw new RegraDeNegocioException("A quantidade de itens deve ser maior que 0.");
+        } else if (precoUnitario.compareTo(BigDecimal.ZERO) < 0) {
+            throw new RegraDeNegocioException("O preco nao pode ser negativo.");
+        }
     }
 
     public BigDecimal subtotal() {
-        throw new UnsupportedOperationException("TODO dupla A");
+        return BigDecimal.valueOf(quantidade).multiply(precoUnitario);
     }
 }
