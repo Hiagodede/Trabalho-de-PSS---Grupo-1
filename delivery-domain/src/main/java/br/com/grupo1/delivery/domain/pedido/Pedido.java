@@ -36,8 +36,8 @@ public class Pedido {
 
     // ---------- Dupla B: Atualizar status ----------
     public void avancarStatus() {
-        // TODO dupla B: RECEBIDO -> EM_PREPARO -> SAIU_PARA_ENTREGA -> ENTREGUE, sem pular nem voltar
-        throw new UnsupportedOperationException("TODO dupla B");
+        this.status = status.proximo().orElseThrow(() -> 
+            new RegraDeNegocioException("Não é possivel avançar: o pedido está " + status + "."));
     }
 
     // ---------- Dupla C: Cancelar pedido ----------
