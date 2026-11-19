@@ -7,19 +7,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-/** Guarda os restaurantes em memória. Dupla A. */
 public class RestauranteRepositorioEmMemoria implements RestauranteRepositorio {
 
     private final Map<String, Restaurante> restaurantes = new HashMap<>();
 
     public void adicionar(Restaurante restaurante) {
-        // TODO dupla A: usado para cadastrar restaurantes de exemplo
-        throw new UnsupportedOperationException("TODO dupla A");
+        restaurantes.put(restaurante.id(), restaurante);
     }
 
     @Override
     public Optional<Restaurante> buscarPorId(String id) {
-        // TODO dupla A
-        throw new UnsupportedOperationException("TODO dupla A");
+        return Optional.ofNullable(restaurantes.get(id));
     }
 }
