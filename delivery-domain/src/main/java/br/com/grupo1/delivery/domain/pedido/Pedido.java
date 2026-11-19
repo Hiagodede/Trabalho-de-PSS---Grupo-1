@@ -1,6 +1,8 @@
 package br.com.grupo1.delivery.domain.pedido;
 
 import br.com.grupo1.delivery.domain.RegraDeNegocioException;
+import br.com.grupo1.delivery.domain.pedido.StatePedido.EstadoPedido;
+import br.com.grupo1.delivery.domain.pedido.StatePedido.PedidoRecebido;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,14 +12,14 @@ public class Pedido {
     private final String restauranteId;
     private final List<ItemPedido> itens;
     private final BigDecimal taxaDeEntrega;
-    private StatusPedido status;
+    private EstadoPedido status;
 
     public Pedido(String id, String restauranteId, List<ItemPedido> itens, BigDecimal taxaDeEntrega) {
         this.id = id;
         this.restauranteId = restauranteId;
         this.itens = List.copyOf(itens);
         this.taxaDeEntrega = taxaDeEntrega;
-        this.status = StatusPedido.RECEBIDO;
+        this.status = new PedidoRecebido();
     }
 
     // ---------- Dupla A: Fazer pedido ----------
@@ -36,8 +38,7 @@ public class Pedido {
 
     // ---------- Dupla B: Atualizar status ----------
     public void avancarStatus() {
-        this.status = status.proximo().orElseThrow(() -> 
-            new RegraDeNegocioException("Não é possivel avançar: o pedido está " + status + "."));
+        this.status = status.avancar();
     }
 
     // ---------- Dupla C: Cancelar pedido ----------
